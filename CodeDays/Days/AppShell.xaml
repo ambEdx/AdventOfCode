@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Days.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:v="clr-namespace:Days.Views"
+    xmlns:local="clr-namespace:Days">
+
+    <FlyoutItem>
+        <ShellContent  Title="HOME" Route="Home" ContentTemplate="{DataTemplate v:MainPage}" />
+        <ShellContent  Title="DAY 1" Route="Day1" ContentTemplate="{DataTemplate v:Day1Page}" />
+    </FlyoutItem>
+
+</Shell>
