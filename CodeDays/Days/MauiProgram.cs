@@ -1,6 +1,8 @@
 ﻿using Days.Services;
 using Days.ViewModels;
 using Days.Views;
+using Days.Views.Day1;
+using Days.Views.Day2;
 
 namespace Days;
 
@@ -22,8 +24,13 @@ public static class MauiProgram
 
         builder.Services.AddTransient<MainPage>();
         builder.Services.AddTransient<MainPageViewModel>();
-        builder.Services.AddTransient<Day1Page>();
-        builder.Services.AddTransient<Day1ViewModel>();
+        builder.Services.AddTransient<Day1Page1>();
+		builder.Services.AddTransient<Day1Page2>();
+        builder.Services.AddTransient<Day1Page3>();
+        builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<Day1ViewModel>(s));
+        builder.Services.AddTransient<Day2Page1>();
+        builder.Services.AddTransient<Day2Page2>();
+        builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<Day2ViewModel>(s));
 
         return builder.Build();
 	}

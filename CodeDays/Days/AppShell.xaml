@@ -4,11 +4,18 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:v="clr-namespace:Days.Views"
-    xmlns:local="clr-namespace:Days">
+    xmlns:local="clr-namespace:Days"
+    Shell.FlyoutBehavior="Flyout">
 
-    <FlyoutItem>
-        <ShellContent  Title="HOME" Route="Home" ContentTemplate="{DataTemplate v:MainPage}" />
-        <ShellContent  Title="DAY 1" Route="Day1" ContentTemplate="{DataTemplate v:Day1Page}" />
+    <ShellContent  Title="HOME" Route="Home" ContentTemplate="{DataTemplate v:MainPage}" />
+    <FlyoutItem Title="Day 1">
+        <ShellContent  Title="INPUT" Route="Day1Pg1" ContentTemplate="{DataTemplate v:Day1.Day1Page1}" />
+        <ShellContent  Title="ELVES" Route="Day1Pg2" ContentTemplate="{DataTemplate v:Day1.Day1Page2}" />
+        <ShellContent  Title="FOOD" Route="Day1Pg3" ContentTemplate="{DataTemplate v:Day1.Day1Page3}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Day 2">
+        <ShellContent  Title="INPUT" Route="Day2Pg1" ContentTemplate="{DataTemplate v:Day2.Day2Page1}" />
+        <ShellContent  Title="SCORES" Route="Day2Pg2" ContentTemplate="{DataTemplate v:Day2.Day2Page2}" />
     </FlyoutItem>
 
 </Shell>

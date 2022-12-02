@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Days.Views.Day2.Day2Page2"
+             Title="Score">
+    <Grid RowDefinitions="Auto,Auto">
+        <Label Grid.Row="0" Padding="6" 
+               FontSize="Caption"
+               HorizontalOptions="Fill"
+               HorizontalTextAlignment="Center"
+               BackgroundColor="{StaticResource Yellow100Accent}"
+               Text="{Binding StatusMessage}" />
+        <Grid Grid.Row="3" ColumnDefinitions="Auto,*">
+            <Label Grid.Column="0" Margin="6" 
+               FontSize="Large"
+               HorizontalOptions="Start"
+               Text="Total:" />
+            <Label Grid.Column="1" Margin="6" 
+               FontSize="Large"
+               HorizontalOptions="Start"
+               Text="{Binding TotalScore}" />
+
+        </Grid>
+    </Grid>
+</ContentPage>

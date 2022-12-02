@@ -1,11 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Days.Models;
-using Microsoft.Maui.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace Days.ViewModels
 {
@@ -16,8 +11,16 @@ namespace Days.ViewModels
         {
             SaveCommand = new Command(HandleSaveCommand);
             ClearCommand = new Command(HandleClearCommand);
-            GetMostFoodCommand = new Command(HandleMostFoodCommand);
+            PropertyChanged += Day1ViewModel_PropertyChanged;
             Task.Run(async () => await Initialise());
+        }
+
+        private void Day1ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Elves))
+            {
+                CalculateMaxFood();
+            }
         }
 
         private async Task Initialise()
@@ -34,13 +37,12 @@ namespace Days.ViewModels
                 if (elf.Foods == null) continue;
                 foreach (var food in elf.Foods)
                 {
-                    result += food.Calories + "\r";
+                    result += food.Calories + "\r\n";
                 }
-                result += "\r";
+                result += "\r\n";
             }
             result = result.TrimEnd();
             CaloriesRaw = result;
-            CalculateMaxFood();
         }
 
         [ObservableProperty]
@@ -51,9 +53,6 @@ namespace Days.ViewModels
 
         [ObservableProperty]
         private Command clearCommand;
-
-        [ObservableProperty]
-        private Command getMostFoodCommand;
 
         [ObservableProperty]
         private List<Elf> elves;
@@ -89,7 +88,7 @@ namespace Days.ViewModels
         private async Task PopulateElvesFoodAsync()
         {
             await App.LocalDataService.ClearAllElvesAndFoodAsync();
-            var elvesRaw = CaloriesRaw.Split("\r\r");
+            var elvesRaw = CaloriesRaw.Split(new[] { "\r\n\r\n", "\r\r", "\n\n" }, StringSplitOptions.None);
             var elfNumber = 1;
             foreach (var elfRaw in elvesRaw)
             {
@@ -102,7 +101,7 @@ namespace Days.ViewModels
                 };
                 await App.LocalDataService.InsertAsync(elf);
 
-                var caloriesRaw = elfRaw.Split("\r");
+                var caloriesRaw = elfRaw.Split(new[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
                 foreach (var caloryRaw in caloriesRaw)
                 {
                     var food = new Food

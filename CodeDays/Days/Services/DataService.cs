@@ -120,6 +120,7 @@ namespace Days.Services
                 conn.CreateTable<Elf>();
                 conn.CreateTable<Food>();
                 conn.CreateTable<FunName>();
+                conn.CreateTable<RockPaperScissorsPlay>();
 
                 SeedFunName(conn);
             }
