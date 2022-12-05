@@ -75,9 +75,9 @@
             }
 
             var result = "";
-            for (int i = 1; i <= stackCount; i++)
+            foreach (var stack in stacks.Values)
             {
-                result += stacks[i].Pop();
+                result += stack.Pop();
             }
 
             Answer = result;
