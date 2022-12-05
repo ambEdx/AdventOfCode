@@ -7895,6 +7895,9 @@ namespace Days
 			// aapt resource value: 0x7F07009D
 			public const int tooltip_frame_light = 2131165341;
 			
+			// aapt resource value: 0x7F07009E
+			public const int wreath = 2131165342;
+			
 			static Drawable()
 			{
 				global::Android.Runtime.ResourceIdManager.UpdateIdValues();

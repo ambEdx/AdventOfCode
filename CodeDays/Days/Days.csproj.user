@@ -9,19 +9,37 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
-    <MauiXaml Update="Views\Day1\Day1Page1.xaml">
+    <MauiXaml Update="Views\Controls\WreathView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\Day1\Day1Page2.xaml">
+    <MauiXaml Update="Views\Day1Page1.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\Day1\Day1Page3.xaml">
+    <MauiXaml Update="Views\Day1Page2.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\Day2\Day2Page1.xaml">
+    <MauiXaml Update="Views\Day2Page1.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
-    <MauiXaml Update="Views\Day2\Day2Page2.xaml">
+    <MauiXaml Update="Views\Day2Page2.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\Day3Page1.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\Day3Page2.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\Day4Page1.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\Day4Page2.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\Day5Page1.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\Day5Page2.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
   </ItemGroup>

@@ -13,8 +13,12 @@ namespace Days.ViewModels
         public MainPageViewModel()
         {
             Splash = "Advent of Code";
+            CurrentDay = DateTime.Today.Day;
         }
         [ObservableProperty]
-        private string _splash;
+        private string splash;
+
+        [ObservableProperty]
+        private int currentDay;
     }
 }

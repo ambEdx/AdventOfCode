@@ -9,13 +9,24 @@
 
     <ShellContent  Title="HOME" Route="Home" ContentTemplate="{DataTemplate v:MainPage}" />
     <FlyoutItem Title="Day 1">
-        <ShellContent  Title="INPUT" Route="Day1Pg1" ContentTemplate="{DataTemplate v:Day1.Day1Page1}" />
-        <ShellContent  Title="ELVES" Route="Day1Pg2" ContentTemplate="{DataTemplate v:Day1.Day1Page2}" />
-        <ShellContent  Title="FOOD" Route="Day1Pg3" ContentTemplate="{DataTemplate v:Day1.Day1Page3}" />
+        <ShellContent  Title="INPUT" Route="Day1Pg1" ContentTemplate="{DataTemplate v:Day1Page1}" />
+        <ShellContent  Title="OUTPUT" Route="Day1Pg2" ContentTemplate="{DataTemplate v:Day1Page2}" />
     </FlyoutItem>
     <FlyoutItem Title="Day 2">
-        <ShellContent  Title="INPUT" Route="Day2Pg1" ContentTemplate="{DataTemplate v:Day2.Day2Page1}" />
-        <ShellContent  Title="SCORES" Route="Day2Pg2" ContentTemplate="{DataTemplate v:Day2.Day2Page2}" />
+        <ShellContent  Title="INPUT" Route="Day2Pg1" ContentTemplate="{DataTemplate v:Day2Page1}" />
+        <ShellContent  Title="OUTPUT" Route="Day2Pg2" ContentTemplate="{DataTemplate v:Day2Page2}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Day 3">
+        <ShellContent  Title="INPUT" Route="Day3Pg1" ContentTemplate="{DataTemplate v:Day3Page1}" />
+        <ShellContent  Title="OUTPUT" Route="Day3Pg2" ContentTemplate="{DataTemplate v:Day3Page2}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Day 4">
+        <ShellContent  Title="INPUT" Route="Day4Pg1" ContentTemplate="{DataTemplate v:Day4Page1}" />
+        <ShellContent  Title="OUTPUT" Route="Day4Pg2" ContentTemplate="{DataTemplate v:Day4Page2}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Day 5">
+        <ShellContent  Title="INPUT" Route="Day5Pg1" ContentTemplate="{DataTemplate v:Day5Page1}" />
+        <ShellContent  Title="OUTPUT" Route="Day5Pg2" ContentTemplate="{DataTemplate v:Day5Page2}" />
     </FlyoutItem>
 
 </Shell>

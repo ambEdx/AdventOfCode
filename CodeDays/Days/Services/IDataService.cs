@@ -11,15 +11,13 @@ namespace Days.Services
     public interface IDataService
     {
         Task<List<T>> GetAllAsync<T>() where T : class, IDataServiceModel, new();
-
         Task ClearAllAsync<T>() where T : class, IDataServiceModel, new();
-
         Task UpdateAsync<T>(T entity) where T : class, IDataServiceModel, new();
         Task InsertAsync<T>(T entity) where T : class, IDataServiceModel, new();
 
+        Task<string> GetInputOfDayAsync(int day);
+        Task ClearInputOfDayAsync(int day);
         Task<FunName> GetRandomFunNameAsync();
 
-        Task<List<Elf>> GetAllElvesAndFoodAsync();
-        Task ClearAllElvesAndFoodAsync();
     }
 }

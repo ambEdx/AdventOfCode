@@ -1,8 +1,6 @@
 ﻿using Days.Services;
 using Days.ViewModels;
 using Days.Views;
-using Days.Views.Day1;
-using Days.Views.Day2;
 
 namespace Days;
 
@@ -22,16 +20,26 @@ public static class MauiProgram
 		builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<DataService>(s));
 
 
-        builder.Services.AddTransient<MainPage>();
-        builder.Services.AddTransient<MainPageViewModel>();
-        builder.Services.AddTransient<Day1Page1>();
-		builder.Services.AddTransient<Day1Page2>();
-        builder.Services.AddTransient<Day1Page3>();
-        builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<Day1ViewModel>(s));
-        builder.Services.AddTransient<Day2Page1>();
-        builder.Services.AddTransient<Day2Page2>();
-        builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<Day2ViewModel>(s));
+        builder.Services.AddSingleton<MainPage>();
+        builder.Services.AddSingleton<MainPageViewModel>();
+        builder.Services.AddSingleton<Day1Page1>();
+		builder.Services.AddSingleton<Day1Page2>();
+        builder.Services.AddSingleton<Day1ViewModel>();
+        builder.Services.AddSingleton<Day2Page1>();
+        builder.Services.AddSingleton<Day2Page2>();
+        builder.Services.AddSingleton<Day2ViewModel>();
+        builder.Services.AddSingleton<Day3Page1>();
+        builder.Services.AddSingleton<Day3Page2>();
+        builder.Services.AddSingleton<Day3ViewModel>();
+        builder.Services.AddSingleton<Day4Page1>();
+        builder.Services.AddSingleton<Day4Page2>();
+        builder.Services.AddSingleton<Day4ViewModel>();
+        builder.Services.AddSingleton<Day5Page1>();
+        builder.Services.AddSingleton<Day5Page2>();
+        builder.Services.AddSingleton<Day5ViewModel>();
 
         return builder.Build();
+
 	}
+
 }

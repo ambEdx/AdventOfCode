@@ -1,4 +1,6 @@
-﻿using Days.Helpers;
+﻿using CommunityToolkit.Mvvm.Messaging;
+using Days.Helpers;
+using Days.Messages;
 using Days.Models;
 using SQLite;
 using System;
@@ -22,17 +24,16 @@ namespace Days.Services
             ConnAsnyc = new SQLiteAsyncConnection(_dbPath);
         }
 
-        public string StatusMessage { get; private set; }
-
         public async Task<List<T>> GetAllAsync<T>() where T : class, IDataServiceModel, new()
         {
             try
             {
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Retrieving data of type '{typeof(T).Name}' ..."));
                 return await ConnAsnyc.Table<T>().ToListAsync();
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Failed to retrieve data of type '{nameof(T)}'. {ex.Message}";
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Failed to retrieve data of type '{typeof(T).Name}'. {ex.Message}"));
             }
             return null;
         }
@@ -42,10 +43,11 @@ namespace Days.Services
             try
             {
                 await ConnAsnyc.Table<T>().DeleteAsync(e => e.Id > 0);
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Cleared data of type '{typeof(T).Name}'."));
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Failed to retrieve data of type '{nameof(T)}'. {ex.Message}";
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Failed to clear data of type '{typeof(T).Name}'. {ex.Message}"));
             }
         }
 
@@ -54,10 +56,11 @@ namespace Days.Services
             try
             {
                 await ConnAsnyc.UpdateAsync(entity);
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Updated data of type '{typeof(T).Name}'."));
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Failed to update data of type '{nameof(T)}'. {ex.Message}";
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Failed to update data of type '{typeof(T).Name}'. {ex.Message}"));
             }
         }
         public async Task InsertAsync<T>(T entity) where T : class, IDataServiceModel, new()
@@ -65,10 +68,37 @@ namespace Days.Services
             try
             {
                 await ConnAsnyc.InsertAsync(entity);
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Saved data of type '{typeof(T).Name}'."));
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Failed to insert data of type '{nameof(T)}'. {ex.Message}";
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Failed to insert data of type '{typeof(T).Name}'. {ex.Message}"));
+            }
+        }
+
+        public async Task<string> GetInputOfDayAsync(int day)
+        {
+            try
+            {
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Retrieving raw input for day {day} ..."));
+                var rawInput = await ConnAsnyc.Table<RawInput>().FirstOrDefaultAsync(e => e.Day == day);
+                return rawInput?.Input;
+            }
+            catch (Exception ex)
+            {
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Failed to retrieve raw input for day {day}. {ex.Message}"));
+            }
+            return null;
+        }
+        public async Task ClearInputOfDayAsync(int day)
+        {
+            try
+            {
+                await ConnAsnyc.Table<RawInput>().DeleteAsync(e => e.Day == day);
+            }
+            catch (Exception ex)
+            {
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Failed to clear raw input for day {day}. {ex.Message}"));
             }
         }
 
@@ -81,46 +111,17 @@ namespace Days.Services
             }
             catch (Exception ex)
             {
-                StatusMessage = $"Failed to retrieve data. {ex.Message}";
+                WeakReferenceMessenger.Default.Send(new DataServiceMessage($"Failed to get a random name. {ex.Message}"));
             }
             return null;
         }
 
-        public async Task<List<Elf>> GetAllElvesAndFoodAsync()
-        {
-            try
-            {
-                var elves = await ConnAsnyc.Table<Elf>().ToListAsync();
-                foreach (var elf in elves)
-                {
-                    elf.Foods = await ConnAsnyc.Table<Food>().Where(f => f.ElfId == elf.Id).ToListAsync();
-                }
-                return elves;
-            }
-            catch (Exception ex)
-            {
-                StatusMessage = $"Failed to retrieve data. {ex.Message}";
-            }
-            return null;
-        }
-
-        public async Task ClearAllElvesAndFoodAsync()
-        {
-            var elves = await ConnAsnyc.Table<Elf>().ToListAsync();
-            foreach (var elf in elves)
-            {
-                await ConnAsnyc.Table<Food>().DeleteAsync(f => f.ElfId == elf.Id);
-            }
-            await ClearAllAsync<Elf>();
-        }
         private void InitialiseDataBase()
         {
             using (var conn = new SQLiteConnection(_dbPath))
             {
-                conn.CreateTable<Elf>();
-                conn.CreateTable<Food>();
                 conn.CreateTable<FunName>();
-                conn.CreateTable<RockPaperScissorsPlay>();
+                conn.CreateTable<RawInput>();
 
                 SeedFunName(conn);
             }
@@ -186,5 +187,6 @@ namespace Days.Services
             conn.Insert(new FunName { Name = "Terry" });
             conn.Insert(new FunName { Name = "Irina" });
         }
+
     }
 }

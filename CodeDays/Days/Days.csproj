@@ -49,36 +49,68 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\wreath.png" />
+	</ItemGroup>
+
+	<ItemGroup>
 	  <PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
 	  <PackageReference Include="sqlite-net-pcl" Version="1.8.116" />
 	  <PackageReference Include="SQLitePCLRaw.provider.dynamic_cdecl" Version="2.1.2" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Update="Views\Day1\Day1Page1.xaml.cs">
+	  <Compile Update="Views\Day1Page1.xaml.cs">
 	    <DependentUpon>Day1Page1.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Views\Day2\Day2Page1.xaml.cs">
+	  <Compile Update="Views\Day1Page2.xaml.cs">
+	    <DependentUpon>Day1Page2.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Day2Page1.xaml.cs">
 	    <DependentUpon>Day2Page1.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\Day1\Day1Page1.xaml">
+	  <MauiXaml Update="Views\Controls\WreathView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Day1\Day1Page2.xaml">
+	  <MauiXaml Update="Views\Day1Page1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Day1\Day1Page3.xaml">
+	  <MauiXaml Update="Views\Day1Page2.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Day2\Day2Page1.xaml">
+	  <MauiXaml Update="Views\Day2Page1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\Day2\Day2Page2.xaml">
+	  <MauiXaml Update="Views\Day2Page2.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\Day3Page1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day3Page2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day4Page1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day4Page2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day5Page1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day5Page2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Views\Day1\" />
+	  <Folder Include="Views\Day2\" />
+	  <Folder Include="Views\Day3\" />
+	  <Folder Include="Views\Day4\" />
 	</ItemGroup>
 
 </Project>
