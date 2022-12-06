@@ -1,0 +1,12 @@
+using Days.ViewModels;
+
+namespace Days.Views;
+
+public partial class Day6Page1 : ContentPage
+{
+	public Day6Page1(Day6ViewModel viewModel)
+	{
+		InitializeComponent();
+        BindingContext = viewModel;
+    }
+}

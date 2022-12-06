@@ -36,6 +36,12 @@
     <MauiXaml Update="Views\Day4Page2.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\Day6Page2.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\Day6Page1.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\Day5Page1.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
