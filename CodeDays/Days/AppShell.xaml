@@ -32,5 +32,9 @@
         <ShellContent  Title="INPUT" Route="Day6Pg1" ContentTemplate="{DataTemplate v:Day6Page1}" />
         <ShellContent  Title="OUTPUT" Route="Day6Pg2" ContentTemplate="{DataTemplate v:Day6Page2}" />
     </FlyoutItem>
+    <FlyoutItem Title="Day 7">
+        <ShellContent  Title="INPUT" Route="Day7Pg1" ContentTemplate="{DataTemplate v:Day7Page1}" />
+        <ShellContent  Title="OUTPUT" Route="Day7Pg2" ContentTemplate="{DataTemplate v:Day7Page2}" />
+    </FlyoutItem>
 
 </Shell>

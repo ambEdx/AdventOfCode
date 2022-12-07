@@ -68,6 +68,12 @@
 	  <Compile Update="Views\Day2Page1.xaml.cs">
 	    <DependentUpon>Day2Page1.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="Views\Day7Page2.xaml.cs">
+	    <DependentUpon>Day7Page2.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Day7Page1.xaml.cs">
+	    <DependentUpon>Day7Page1.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Day6Page2.xaml.cs">
 	    <DependentUpon>Day6Page2.xaml</DependentUpon>
 	  </Compile>
@@ -102,6 +108,12 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Day4Page2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day7Page2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day7Page1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Day6Page2.xaml">
