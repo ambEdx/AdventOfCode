@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using Point = System.Drawing.Point;
+﻿using Point = System.Drawing.Point;
 
 namespace Days.ViewModels
 {
@@ -61,10 +60,6 @@ namespace Days.ViewModels
                 int tl = 0;
                 foreach (var treeline in viewPoint)
                 {
-                    if (v == FROM_RIGHT && tl == 4)
-                    {
-                        var stp = 0;
-                    }
                     var highestTrees = FindHighestTrees(treeline);
                     foreach (var tree in highestTrees)
                     {
@@ -154,8 +149,8 @@ namespace Days.ViewModels
                         break;
                     }
                 }
-                totalViewingDistance *= viewingDistance;
 
+                totalViewingDistance *= viewingDistance;
 
                 v++;
             }
