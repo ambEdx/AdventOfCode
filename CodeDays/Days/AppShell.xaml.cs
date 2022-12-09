@@ -22,5 +22,7 @@ public partial class AppShell : Shell
         Routing.RegisterRoute("Day6Pg2", typeof(Day6Page2));
         Routing.RegisterRoute("Day7Pg1", typeof(Day7Page1));
         Routing.RegisterRoute("Day7Pg2", typeof(Day7Page2));
+        Routing.RegisterRoute("Day8Pg1", typeof(Day8Page1));
+        Routing.RegisterRoute("Day8Pg2", typeof(Day8Page2));
     }
 }
