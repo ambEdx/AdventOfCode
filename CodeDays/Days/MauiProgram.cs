@@ -15,6 +15,7 @@ public static class MauiProgram
 			{
 				fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 				fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                fonts.AddFont("CONSOLA.TTF", "Consolas");
 			});
 
 		builder.Services.AddSingleton(s => ActivatorUtilities.CreateInstance<DataService>(s));
@@ -46,6 +47,12 @@ public static class MauiProgram
         builder.Services.AddSingleton<Day8Page1>();
         builder.Services.AddSingleton<Day8Page2>();
         builder.Services.AddSingleton<Day8ViewModel>();
+        builder.Services.AddSingleton<Day9Page1>();
+        builder.Services.AddSingleton<Day9Page2>();
+        builder.Services.AddSingleton<Day9ViewModel>();
+        builder.Services.AddSingleton<Day10Page1>();
+        builder.Services.AddSingleton<Day10Page2>();
+        builder.Services.AddSingleton<Day10ViewModel>();
 
         return builder.Build();
 

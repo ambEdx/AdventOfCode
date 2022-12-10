@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Days.Views.Day8Page1"
-             Title="Day 7 Input">
+             Title="Day 8 Input">
     <Grid RowDefinitions="Auto,Auto,*,Auto">
         <Label Grid.Row="0" Padding="6" 
                FontSize="Caption"
