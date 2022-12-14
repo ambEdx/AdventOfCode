@@ -12,6 +12,12 @@
     <MauiXaml Update="Views\Controls\WreathView.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>
+    <MauiXaml Update="Views\Day12Page2.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
+    <MauiXaml Update="Views\Day12Page1.xaml">
+      <SubType>Designer</SubType>
+    </MauiXaml>
     <MauiXaml Update="Views\Day11Page1.xaml">
       <SubType>Designer</SubType>
     </MauiXaml>

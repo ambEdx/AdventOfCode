@@ -60,6 +60,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Day12Page2.xaml.cs">
+	    <DependentUpon>Day12Page2.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Day12Page1.xaml.cs">
+	    <DependentUpon>Day12Page1.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Day11Page1.xaml.cs">
 	    <DependentUpon>Day11Page1.xaml</DependentUpon>
 	  </Compile>
@@ -109,6 +115,12 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\Controls\WreathView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day12Page2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day12Page1.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Day11Page1.xaml">
