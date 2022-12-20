@@ -55,6 +55,20 @@
     <FlyoutItem Title="Day 12">
         <ShellContent  Title="INPUT" Route="Day12Pg1" ContentTemplate="{DataTemplate v:Day12Page1}" />
         <ShellContent  Title="OUTPUT" Route="Day12Pg2" ContentTemplate="{DataTemplate v:Day12Page2}" />
+        <ShellContent  Title="ANIMATION" Route="Day12Pg3" ContentTemplate="{DataTemplate v:Day12Page3}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Day 13">
+        <ShellContent  Title="INPUT" Route="Day13Pg1" ContentTemplate="{DataTemplate v:Day13Page1}" />
+        <ShellContent  Title="OUTPUT" Route="Day13Pg2" ContentTemplate="{DataTemplate v:Day13Page2}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Day 14">
+        <ShellContent  Title="INPUT" Route="Day14Pg1" ContentTemplate="{DataTemplate v:Day14Page1}" />
+        <ShellContent  Title="OUTPUT" Route="Day14Pg2" ContentTemplate="{DataTemplate v:Day14Page2}" />
+        <ShellContent  Title="ADDITIONAL" Route="Day14Pg3" ContentTemplate="{DataTemplate v:Day14Page3}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Day 15">
+        <ShellContent  Title="INPUT" Route="Day15Pg1" ContentTemplate="{DataTemplate v:Day15Page1}" />
+        <ShellContent  Title="OUTPUT" Route="Day15Pg2" ContentTemplate="{DataTemplate v:Day15Page2}" />
     </FlyoutItem>
 
 </Shell>

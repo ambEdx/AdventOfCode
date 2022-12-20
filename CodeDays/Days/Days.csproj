@@ -60,6 +60,30 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\Day15Page2.xaml.cs">
+	    <DependentUpon>Day15Page2.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Day15Page1.xaml.cs">
+	    <DependentUpon>Day15Page1.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Day14Page3.xaml.cs">
+	    <DependentUpon>Day14Page3.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Day14Page2.xaml.cs">
+	    <DependentUpon>Day14Page2.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Day14Page1.xaml.cs">
+	    <DependentUpon>Day14Page1.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Day13Page2.xaml.cs">
+	    <DependentUpon>Day13Page2.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Day13Page1.xaml.cs">
+	    <DependentUpon>Day13Page1.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Day12Page3.xaml.cs">
+	    <DependentUpon>Day12Page3.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\Day12Page2.xaml.cs">
 	    <DependentUpon>Day12Page2.xaml</DependentUpon>
 	  </Compile>
@@ -115,6 +139,30 @@
 
 	<ItemGroup>
 	  <MauiXaml Update="Views\Controls\WreathView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day15Page2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day15Page1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day14Page3.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day14Page2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day14Page1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day13Page2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day13Page1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Day12Page3.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Day12Page2.xaml">

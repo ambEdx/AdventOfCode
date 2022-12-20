@@ -847,6 +847,9 @@
     <AppxPackagedFile Include="C:\Users\ashle\source\repos\ambEdx\AdventOfCode\CodeDays\Days\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\sp\splashSplashScreen.scale-400.png">
       <PackagePath>splashSplashScreen.scale-400.png</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\ashle\source\repos\ambEdx\AdventOfCode\CodeDays\Days\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\f\CONSOLA.TTF">
+      <PackagePath>CONSOLA.TTF</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\ashle\source\repos\ambEdx\AdventOfCode\CodeDays\Days\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\f\OpenSans-Regular.ttf">
       <PackagePath>OpenSans-Regular.ttf</PackagePath>
     </AppxPackagedFile>

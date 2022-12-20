@@ -4,6 +4,15 @@
         <name>Days</name>
     </assembly>
     <members>
+        <member name="P:Days.ViewModels.Day12ViewModel.AnimatedAnswer">
+            <inheritdoc cref="F:Days.ViewModels.Day12ViewModel.animatedAnswer"/>
+        </member>
+        <member name="P:Days.ViewModels.Day12ViewModel.AnimateCommand">
+            <inheritdoc cref="F:Days.ViewModels.Day12ViewModel.animateCommand"/>
+        </member>
+        <member name="P:Days.ViewModels.Day12ViewModel.RouteCommand">
+            <inheritdoc cref="F:Days.ViewModels.Day12ViewModel.routeCommand"/>
+        </member>
         <member name="E:Days.ViewModels.MainPageViewModel.PropertyChanged">
             <inheritdoc cref = "E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged"/>
         </member>

@@ -351,3 +351,4 @@ C:\Users\ashle\source\repos\ambEdx\AdventOfCode\CodeDays\Days\obj\Debug\net6.0-w
 C:\Users\ashle\source\repos\ambEdx\AdventOfCode\CodeDays\Days\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
 C:\Users\ashle\source\repos\ambEdx\AdventOfCode\CodeDays\Days\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\ProjectArchitectures.txt
 C:\Users\ashle\source\repos\ambEdx\AdventOfCode\CodeDays\Days\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\r\wreath.scale-100.png
+C:\Users\ashle\source\repos\ambEdx\AdventOfCode\CodeDays\Days\obj\Debug\net6.0-windows10.0.19041.0\win10-x64\resizetizer\f\CONSOLA.TTF

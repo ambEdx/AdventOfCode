@@ -58,7 +58,18 @@ public static class MauiProgram
         builder.Services.AddSingleton<Day11ViewModel>();
         builder.Services.AddSingleton<Day12Page1>();
         builder.Services.AddSingleton<Day12Page2>();
+        builder.Services.AddSingleton<Day12Page3>();
         builder.Services.AddSingleton<Day12ViewModel>();
+        builder.Services.AddSingleton<Day13Page1>();
+        builder.Services.AddSingleton<Day13Page2>();
+        builder.Services.AddSingleton<Day13ViewModel>();
+        builder.Services.AddSingleton<Day14Page1>();
+        builder.Services.AddSingleton<Day14Page2>();
+        builder.Services.AddSingleton<Day14Page3>();
+        builder.Services.AddSingleton<Day14ViewModel>();
+        builder.Services.AddSingleton<Day15Page1>();
+        builder.Services.AddSingleton<Day15Page2>();
+        builder.Services.AddSingleton<Day15ViewModel>();
 
         return builder.Build();
 

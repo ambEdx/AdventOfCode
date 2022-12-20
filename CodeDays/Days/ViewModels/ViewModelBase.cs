@@ -9,6 +9,12 @@ namespace Days.ViewModels
     [ObservableObject]
     public partial class ViewModelBase
     {
+        public string CR => Environment.NewLine;
+        public string CRCR => Environment.NewLine + Environment.NewLine;
+
+        public string[] ALL_CR = new string[] { "\r\n", "\r", "\n" };
+        public string[] ALL_CRCR = new string[] { "\r\n\r\n", "\r\r", "\n\n" };
+
         public ViewModelBase()
         {
             WeakReferenceMessenger.Default.Register<DataServiceMessage>(this, (r, m) => StatusMessage = m.Value);
@@ -16,10 +22,10 @@ namespace Days.ViewModels
             SaveCommand = new RelayCommand(HandleSaveCommand, () => !string.IsNullOrWhiteSpace(RawInput));
             ClearCommand = new RelayCommand(HandleClearCommand, () => !string.IsNullOrWhiteSpace(RawInput));
             ProcessCommand = new RelayCommand(HandleProcessCommand, () => !string.IsNullOrWhiteSpace(RawInput));
-            PropertyChanged += ViewModelBase_PropertyChanged;
+            PropertyChanged += ViewModel_PropertyChanged;
         }
 
-        private void ViewModelBase_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        protected virtual void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             if (e.PropertyName == nameof(RawInput))
             {

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Days.Views.Day14Page1"
+             Title="Day 14 Input">
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <Label Grid.Row="0" Padding="6" 
+               FontSize="Caption"
+               HorizontalOptions="Fill"
+               HorizontalTextAlignment="Center"
+               BackgroundColor="{StaticResource Yellow100Accent}"
+               Text="{Binding StatusMessage}" />
+        <Label Grid.Row="1" Margin="6" 
+               FontSize="Subtitle"
+               HorizontalOptions="Center"
+               Text="Raw Input" />
+        <Editor Grid.Row="2" Margin="6"
+                FontSize="Small"
+                Text="{Binding RawInput}" />
+        <Grid Grid.Row="3" ColumnDefinitions="*,*,*,*" HorizontalOptions="Center">
+            <Button Grid.Column="0" Margin="6" Text="Fetch" Command="{Binding FetchCommand}" />
+            <Button Grid.Column="1" Margin="6" Text="Clear" Command="{Binding ClearCommand}" />
+            <Button Grid.Column="2" Margin="6" Text="Save" Command="{Binding SaveCommand}" />
+            <Button Grid.Column="3" Margin="6" Text="Go For It" Command="{Binding ProcessCommand}" />
+        </Grid>
+    </Grid>
+</ContentPage>

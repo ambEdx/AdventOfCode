@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Days.Views.Day14Page3"
+             Title="Day 14 Additional">
+    <ScrollView Orientation="Both">
+        <Label FontFamily="Consolas" 
+               FontSize="8" 
+               BackgroundColor="Black" 
+               Margin="6" 
+               Padding="6"
+               TextColor="Chartreuse" 
+               HorizontalOptions="CenterAndExpand"
+               VerticalOptions="StartAndExpand"
+               LineBreakMode="NoWrap" 
+               Text="{Binding AdditionalAnswer}" />
+    </ScrollView>
+</ContentPage>

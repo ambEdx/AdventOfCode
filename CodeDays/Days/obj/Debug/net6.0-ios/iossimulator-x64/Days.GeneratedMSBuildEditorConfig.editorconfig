@@ -75,6 +75,54 @@ build_metadata.AdditionalFiles.ManifestResourceName = Days.Views.Day12Page2.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\Day12Page2.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\Day12Page2.xaml
 
+[C:/Users/ashle/source/repos/ambEdx/AdventOfCode/CodeDays/Days/Views/Day12Page3.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Days.Views.Day12Page3.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Day12Page3.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Day12Page3.xaml
+
+[C:/Users/ashle/source/repos/ambEdx/AdventOfCode/CodeDays/Days/Views/Day13Page1.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Days.Views.Day13Page1.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Day13Page1.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Day13Page1.xaml
+
+[C:/Users/ashle/source/repos/ambEdx/AdventOfCode/CodeDays/Days/Views/Day13Page2.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Days.Views.Day13Page2.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Day13Page2.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Day13Page2.xaml
+
+[C:/Users/ashle/source/repos/ambEdx/AdventOfCode/CodeDays/Days/Views/Day14Page1.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Days.Views.Day14Page1.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Day14Page1.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Day14Page1.xaml
+
+[C:/Users/ashle/source/repos/ambEdx/AdventOfCode/CodeDays/Days/Views/Day14Page2.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Days.Views.Day14Page2.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Day14Page2.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Day14Page2.xaml
+
+[C:/Users/ashle/source/repos/ambEdx/AdventOfCode/CodeDays/Days/Views/Day14Page3.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Days.Views.Day14Page3.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Day14Page3.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Day14Page3.xaml
+
+[C:/Users/ashle/source/repos/ambEdx/AdventOfCode/CodeDays/Days/Views/Day15Page1.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Days.Views.Day15Page1.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Day15Page1.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Day15Page1.xaml
+
+[C:/Users/ashle/source/repos/ambEdx/AdventOfCode/CodeDays/Days/Views/Day15Page2.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = Days.Views.Day15Page2.xaml
+build_metadata.AdditionalFiles.TargetPath = Views\Day15Page2.xaml
+build_metadata.AdditionalFiles.RelativePath = Views\Day15Page2.xaml
+
 [C:/Users/ashle/source/repos/ambEdx/AdventOfCode/CodeDays/Days/Views/Day1Page1.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = Days.Views.Day1Page1.xaml

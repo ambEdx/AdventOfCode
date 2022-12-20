@@ -1,61 +1,89 @@
-﻿using System.Numerics;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using System.ComponentModel;
 using Point = System.Drawing.Point;
+using Size = System.Drawing.Size;
 
 namespace Days.ViewModels
 {
     public partial class Day12ViewModel : ViewModelBase
     {
+        private Dictionary<Point, bool> _closedPoints;
+        private Dictionary<Point, bool> _openPoints;
+        private Dictionary<Point, int> _gScores;
+        private Dictionary<Point, int> _fScores;
+        private Dictionary<Point, Point> _nodes;
+        private int[,] _graph;
+        private char[,] _graphChar;
+        private char[,] _animatedGraph;
+        private Size _graphSize;
+        private Point _start;
+        private Point _end;
+        private bool _doAnimation;
+
         #region Constructor
         public Day12ViewModel()
         {
             Day = 12;
+            AnimateCommand = new RelayCommand(HandleAnimateCommand, () => !string.IsNullOrWhiteSpace(RawInput));
+            RouteCommand = new RelayCommand(HandleRouteCommand, () => !string.IsNullOrWhiteSpace(RawInput));
         }
         #endregion
 
-        private Dictionary<Point, bool> _closedPoints = new();
-        private Dictionary<Point, bool> _openPoints = new ();
-        private Dictionary<Point, int> _gScores = new ();
-        private Dictionary<Point, int> _fScores = new ();
-        private Dictionary<Point, Point> _nodes = new ();
+        [ObservableProperty]
+        private string animatedAnswer;
 
-        #region Overrides
-        protected async override void HandleProcessCommand()
+        [ObservableProperty]
+        private RelayCommand animateCommand;
+
+        [ObservableProperty]
+        private RelayCommand routeCommand;
+
+        private async void HandleAnimateCommand()
         {
-            var lines = RawInput.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
-            var graph = new int[lines.Length, lines[0].Length];
-
-            var start = new Point();
-            var end = new Point();
-            var r = 0;
-            var c = 0;
-            foreach (var line in lines)
+            _doAnimation = true;
+            InitialiseGraph();
+            await RefreshAnimated();
+            await FindPath();
+        }
+        private async void HandleRouteCommand()
+        {
+            _doAnimation = false;
+            InitialiseGraph();
+            var points = await FindPath();
+            var result = string.Empty;
+            for (int r = 0; r < _graphSize.Height; r++)
             {
-                foreach (var chr in line)
+                for (int c = 0; c < _graphSize.Width; c++)
                 {
-
-                    if (chr == 'S')
+                    var chr = ' ';
+                    if (points.Any(p => p.X == c && p.Y == r))
                     {
-                        graph[r, c] = 1;
-                        start.X = r;
-                        start.Y = c;
+                        var point = points.FirstOrDefault(p => p.X == c && p.Y == r);
+                        chr = _graphChar[point.Y, point.X];
                     }
-                    else if (chr == 'E')
-                    {
-                        graph[r, c] = 26;
-                        end.X = r;
-                        end.Y = c;
-                    }
-                    else
-                    {
-                        graph[r, c] = chr - 96;
-                    }
-                    c++;
+                    result += chr.ToString();
                 }
-                r++;
-                c = 0;
+                result += "\r\n";
             }
 
-            var results = FindPath(graph, start, end);
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                AnimatedAnswer = result;
+            });
+        }
+
+        #region Overrides
+        protected override void ViewModel_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.ViewModel_PropertyChanged(sender, e);
+            AnimateCommand?.NotifyCanExecuteChanged();
+            RouteCommand?.NotifyCanExecuteChanged();
+        }
+        protected async override void HandleProcessCommand()
+        {
+            InitialiseGraph();
+            var results = await FindPath();
             Answer = results.Count.ToString();
 
             await Shell.Current.GoToAsync("//Day12Pg2");
@@ -64,17 +92,64 @@ namespace Days.ViewModels
         #endregion
 
         #region Private Helpers
-        public List<Point> FindPath(int[,] graph, Point start, Point end)
+        private void InitialiseGraph()
         {
+            _closedPoints = new();
+            _openPoints = new();
+            _gScores = new();
+            _fScores = new();
+            _nodes = new();
+            _start = new();
+            _end = new();
 
-            _openPoints[start] = true;
-            _gScores[start] = 0;
-            _fScores[start] = CalcHeuristic(start, end);
+            var lines = RawInput.Split(new string[] { "\r\n", "\r", "\n" }, StringSplitOptions.None);
+            _graphSize = new Size(lines[0].Length, lines.Length);
+            _graph = new int[_graphSize.Height, _graphSize.Width];
+            _graphChar = new char[_graphSize.Height, _graphSize.Width];
+            _animatedGraph = new char[_graphSize.Height, _graphSize.Width];
+
+            var col = 0;
+            var row = 0;
+            foreach (var line in lines)
+            {
+                foreach (var chr in line)
+                {
+
+                    if (chr == 'S')
+                    {
+                        _graph[row, col] = 1;
+                        _start.X = col;
+                        _start.Y = row;
+                    }
+                    else if (chr == 'E')
+                    {
+                        _graph[row, col] = 26;
+                        _end.X = col;
+                        _end.Y = row;
+                    }
+                    else
+                    {
+                        _graph[row, col] = chr - 96;
+                    }
+                    _graphChar[row, col] = chr;
+                    _animatedGraph[row, col] = ' ';
+                    col++;
+                }
+                row++;
+                col = 0;
+            }
+        }
+
+        private async Task<List<Point>> FindPath()
+        {
+            _openPoints[_start] = true;
+            _gScores[_start] = 0;
+            _fScores[_start] = CalcHeuristic(_start);
 
             while (_openPoints.Count > 0)
             {
                 var current = BestNode();
-                if (current == end)
+                if (current == _end)
                 {
                     return ReversedPoints(current);
                 }
@@ -82,35 +157,39 @@ namespace Days.ViewModels
                 _openPoints.Remove(current);
                 _closedPoints[current] = true;
 
-                var adjacents = ValidAdjacents(graph, current, false);
+                var adjacents = ValidAdjacents(current, false);
                 foreach (var adjacent in adjacents)
                 {
                     if (_closedPoints.ContainsKey(adjacent)) continue;
 
-                    var projectedGScore = CalcGScore(current) + 1;
+                    var projectedGScore = GetGScore(current) + 1;
 
                     if (!_openPoints.ContainsKey(adjacent))
                     {
                         _openPoints[adjacent] = true;
                     }
-                    else if (projectedGScore >= CalcGScore(adjacent))
+                    else if (projectedGScore >= GetGScore(adjacent))
                     {
                         continue;
                     }
 
                     _nodes[adjacent] = current;
                     _gScores[adjacent] = projectedGScore;
-                    _fScores[adjacent] = projectedGScore + CalcHeuristic(adjacent, end);
+                    _fScores[adjacent] = projectedGScore + CalcHeuristic(adjacent);
+                    if (_doAnimation)
+                    {
+                        await RefreshAnimated();
+                    }
                 }
             }
 
             return new List<Point>();
         }
 
-        private List<Point> ValidAdjacents(int[,] graph, Point point, bool useDiagonals)
+        private List<Point> ValidAdjacents(Point point, bool useDiagonals)
         {
             var result = new List<Point>();
-            var currentValue = graph[point.X, point.Y];
+            var currentValue = _graph[point.Y, point.X];
             var maxI = useDiagonals ? 5 : 3;
             for (var i = 0; i <= maxI; i++)
             {
@@ -126,9 +205,9 @@ namespace Days.ViewModels
                     case 5: dx = -1; dy = -1; break;
                 }
                 var adjacentPoint = new Point(point.X + dx, point.Y + dy);
-                if (adjacentPoint.X >= 0 && adjacentPoint.X < graph.GetLength(0) && adjacentPoint.Y >= 0 && adjacentPoint.Y < graph.GetLength(1))
+                if (adjacentPoint.X >= 0 && adjacentPoint.X < _graphSize.Width && adjacentPoint.Y >= 0 && adjacentPoint.Y < _graphSize.Height)
                 {
-                    if (graph[adjacentPoint.X, adjacentPoint.Y] <= currentValue + 1)
+                    if (_graph[adjacentPoint.Y, adjacentPoint.X] <= currentValue + 1)
                     {
                         result.Add(adjacentPoint);
                     }
@@ -155,7 +234,7 @@ namespace Days.ViewModels
             var bestPoint = new Point();
             foreach (var node in _openPoints.Keys)
             {
-                var score = CalcFScore(node);
+                var score = GetFScore(node);
                 if (score < best)
                 {
                     bestPoint = node;
@@ -166,13 +245,13 @@ namespace Days.ViewModels
             return bestPoint;
         }
 
-        private int CalcHeuristic(Point start, Point end)
+        private int CalcHeuristic(Point current)
         {
-            var dx = end.X - start.X;
-            var dy = end.Y - start.Y;
+            var dx = _end.X - current.X;
+            var dy = _end.Y - current.Y;
             return Math.Abs(dx) + Math.Abs(dy);
         }
-        private int CalcGScore(Point point)
+        private int GetGScore(Point point)
         {
             if (_gScores.TryGetValue(point, out var score))
             {
@@ -181,13 +260,40 @@ namespace Days.ViewModels
             return int.MaxValue;
         }
 
-        private int CalcFScore(Point point)
+        private int GetFScore(Point point)
         {
             if (_fScores.TryGetValue(point, out var score))
             {
                 return score;
             }
             return int.MaxValue;
+        }
+
+        private Task RefreshAnimated()
+        {
+            return Task.Run(() =>
+            {
+                foreach (var point in _nodes.Values)
+                {
+                    _animatedGraph[point.Y, point.X] = _graphChar[point.Y, point.X];
+                }
+
+                var result = string.Empty;
+                for (int r = 0; r < _graphSize.Height; r++)
+                {
+                    for (int c = 0; c < _graphSize.Width; c++)
+                    {
+                        result += _animatedGraph[r, c].ToString();
+                    }
+                    result += "\r\n";
+                }
+
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    AnimatedAnswer = result;
+                });
+            });
+
         }
         #endregion
     }

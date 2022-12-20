@@ -1,4 +1,3 @@
-using AndroidX.Lifecycle;
 using Days.ViewModels;
 
 namespace Days.Views;
