@@ -1,11 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using Days.Models;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Numerics;
 using System.Text;
-using System.Text.Json;
 using Point = System.Drawing.Point;
 using Size = System.Drawing.Size;
 
